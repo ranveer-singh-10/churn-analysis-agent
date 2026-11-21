@@ -1,21 +1,17 @@
 # Security and Public Repository Rules
 
-Do not commit:
+Do not commit customer or prospect names, contact details, customer domains, real email content, commercial values, renewal dates, churn data, internal notes, production field names, report identifiers, tenant or environment identifiers, connection references, distribution lists, credentials, production workflow exports, run history or generated production reports.
 
-- Customer, prospect or contact names
-- Customer email addresses or domains
-- Real email subjects, bodies or attachments
-- Real ARR, renewal or churn values
-- Internal notes or activities
-- Production field/API names
-- Tenant, environment, account, report or connector IDs
-- Connection references or user-specific connection names
-- Distribution lists or report recipients
-- API keys, tokens, passwords, secrets or certificates
-- Production workflow/solution exports
-- Workflow run history containing real data
-- Generated production reports
+Use placeholders and completely synthetic examples only.
 
-Use placeholders and synthetic examples only.
+## Reporting a concern
 
-Before publishing screenshots, crop browser chrome and remove environment names, URLs, user/profile information, run outputs and connector configuration. Strip image metadata before committing.
+If confidential information is committed accidentally:
+
+1. Remove public access if possible.
+2. Notify the repository owner and the organisation's security or privacy contact.
+3. Revoke exposed credentials or tokens immediately.
+4. Remove the information from Git history rather than only deleting the latest version.
+5. Review forks, releases, actions logs and cached artefacts for further exposure.
+
+Do not open a public issue containing the exposed information.
