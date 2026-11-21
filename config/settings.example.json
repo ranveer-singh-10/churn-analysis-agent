@@ -1,1 +1,13 @@
-
+{
+  "accountRecordType": "<ACCOUNT_RECORD_TYPE>",
+  "customerType": "<CUSTOMER_TYPE>",
+  "activityLookbackDays": 90,
+  "emailLookbackDays": 14,
+  "renewalWindowMonths": 6,
+  "sentimentField": "<CSM_SENTIMENT_FIELD>",
+  "renewalDateField": "<RENEWAL_DATE_FIELD>",
+  "arrField": "<ARR_FIELD>",
+  "churnProbabilityField": "<CHURN_PROBABILITY_FIELD>",
+  "forecastSource": "<CHURN_FORECAST_SOURCE>",
+  "reportRecipients": ["<INTERNAL_RECIPIENT>"]
+}
