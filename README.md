@@ -21,12 +21,6 @@ The workflow contains three stages:
 3. **Send an email**  
    Sends the resulting HTML report to authorised internal recipients.
 
-```mermaid
-flowchart LR
-    A[Scheduled recurrence] --> B[Analyse eligible accounts]
-    B --> C[Generate sanitised HTML report]
-    C --> D[Send report to authorised recipients]
-```
 
 ## Purpose
 
