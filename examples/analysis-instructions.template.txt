@@ -1,0 +1,55 @@
+Context:
+Review the organisation's customer churn forecast.
+
+Scope:
+Include accounts where:
+- Record Type = "<ACCOUNT_RECORD_TYPE>"
+- Customer Type = "<CUSTOMER_TYPE>"
+
+Data:
+- Customer success sentiment: <CSM_SENTIMENT_FIELD>
+- Notes and activities from the last <ACTIVITY_LOOKBACK_DAYS> days
+- Renewal date: <RENEWAL_DATE_FIELD>
+- Annual recurring revenue: <ARR_FIELD>
+- Current churn forecast: <CHURN_FORECAST_SOURCE>
+- Current churn probability: <CHURN_PROBABILITY_FIELD>
+- Relevant Outlook emails from the last <EMAIL_LOOKBACK_DAYS> days
+
+Email evidence:
+Review relevant recent messages with a clear connection to the account, a confirmed customer contact or an approved customer email domain.
+
+Look for explicit risk evidence such as dissatisfaction, unresolved escalation, implementation/integration/product problems, lack of value, low adoption, commercial or renewal concerns, cancellation/downgrade requests, competitor evaluation, loss of a key sponsor, restructuring/financial pressure, sustained disengagement supported by context, or direct statements that renewal is at risk.
+
+Also consider explicit positive evidence such as confirmed renewal intent, positive feedback, resolution of a significant issue, increased engagement/adoption, expansion discussions or strong stakeholder engagement.
+
+Do not infer sentiment from tone. Do not treat ordinary operational questions, isolated support issues, delayed replies or neutral language as churn risk unless evidence connects them to dissatisfaction, disengagement, commercial risk or renewal risk.
+
+Task:
+Assess each eligible account's churn risk using customer success sentiment as the primary signal, supported by activities, account data and relevant Outlook evidence.
+
+Identify accounts not already in the forecast that have sufficient evidence to justify inclusion.
+
+For accounts already in the forecast, recommend whether probability should increase, decrease or remain unchanged.
+
+Probability bands:
+- Low: 10-25%
+- Medium: 26-50%
+- High: 51-75%
+- Critical: 76-100%
+
+Evidence rules:
+- Cite the specific evidence used for every recommendation.
+- Label evidence by source.
+- Include relevant dates.
+- Give direct customer statements greater weight than internal speculation.
+- Do not infer facts that are not supported.
+- State conflicts between sources.
+- Do not change churn risk solely because an email exists.
+- List accounts with missing or outdated sentiment separately and do not guess.
+
+Output:
+Return one Outlook-compatible HTML table using inline styles only.
+Columns: Account | ARR | Renewal Date | CSM Sentiment | In Forecast? | Current % | Recommended % | Action | Evidence
+Sort: Add first, then ARR descending.
+After the table include the number of accounts recommended to add, number where churn probability should change and total ARR at risk.
+Return HTML only.
