@@ -15,19 +15,25 @@ Data:
 - Current churn probability: <CHURN_PROBABILITY_FIELD>
 - Relevant Outlook emails from the last <EMAIL_LOOKBACK_DAYS> days
 
-Email evidence:
-Review relevant recent messages with a clear connection to the account, a confirmed customer contact or an approved customer email domain.
+Outlook email analysis:
+For each eligible account, review recent messages with a clear connection to the account, a confirmed customer contact or an approved customer email domain.
 
-Look for explicit risk evidence such as dissatisfaction, unresolved escalation, implementation/integration/product problems, lack of value, low adoption, commercial or renewal concerns, cancellation/downgrade requests, competitor evaluation, loss of a key sponsor, restructuring/financial pressure, sustained disengagement supported by context, or direct statements that renewal is at risk.
+Review both:
+- Emails received from confirmed customer contacts.
+- Emails sent by authorised internal colleagues when the content contains relevant customer-risk information.
 
-Also consider explicit positive evidence such as confirmed renewal intent, positive feedback, resolution of a significant issue, increased engagement/adoption, expansion discussions or strong stakeholder engagement.
+Look for explicit risk evidence such as dissatisfaction, complaints, unresolved escalation, implementation/integration/data/product problems, unmet value, low adoption, meaningful disengagement, pricing or budget concerns, contract or renewal concerns, cancellation, termination, licence/user/site/spend reductions, downgrade requests, competitor evaluation, loss of a key sponsor, restructuring, acquisition, financial pressure, repeated unanswered follow-ups supported by other disengagement evidence, or direct statements that renewal is at risk.
 
-Do not infer sentiment from tone. Do not treat ordinary operational questions, isolated support issues, delayed replies or neutral language as churn risk unless evidence connects them to dissatisfaction, disengagement, commercial risk or renewal risk.
+Also consider explicit positive evidence such as confirmed renewal intent, positive feedback, resolution of a significant issue, increased engagement or adoption, expansion discussions or strong stakeholder engagement.
+
+Treat Outlook evidence as supporting evidence alongside customer success data.
+
+Do not infer sentiment from tone. Do not treat ordinary operational questions, isolated support issues, delayed replies or neutral language as churn risk unless explicit evidence connects them to dissatisfaction, disengagement, commercial risk or renewal risk.
 
 Task:
-Assess each eligible account's churn risk using customer success sentiment as the primary signal, supported by activities, account data and relevant Outlook evidence.
+Assess each eligible account's churn risk using customer success sentiment as the primary signal, supported by recent activities, account data and relevant Outlook evidence.
 
-Identify accounts not already in the forecast that have sufficient evidence to justify inclusion.
+Identify accounts not currently in the churn forecast that have sufficient evidence to justify inclusion.
 
 For accounts already in the forecast, recommend whether probability should increase, decrease or remain unchanged.
 
@@ -37,19 +43,50 @@ Probability bands:
 - High: 51-75%
 - Critical: 76-100%
 
+Potential review criteria:
+- Red sentiment.
+- Amber sentiment with a negative trend.
+- Renewal within six months combined with meaningful risk evidence.
+- Open escalation.
+- Loss of a key contact or champion.
+- Explicit negative customer feedback.
+- Cancellation, downgrade or competitor discussion.
+- Significant unresolved issue.
+- Other strong recent evidence.
+
 Evidence rules:
 - Cite the specific evidence used for every recommendation.
-- Label evidence by source.
-- Include relevant dates.
+- For customer success evidence, include the field value or note/activity date and a concise summary.
+- For Outlook evidence, include the date, sender classification and a concise summary.
+- Label each source clearly.
 - Give direct customer statements greater weight than internal speculation.
-- Do not infer facts that are not supported.
+- Do not infer sentiment from tone alone.
+- Do not treat internal concern as a confirmed customer position without customer evidence.
+- Do not infer unsupported facts.
 - State conflicts between sources.
 - Do not change churn risk solely because an email exists.
 - List accounts with missing or outdated sentiment separately and do not guess.
 
 Output:
 Return one Outlook-compatible HTML table using inline styles only.
-Columns: Account | ARR | Renewal Date | CSM Sentiment | In Forecast? | Current % | Recommended % | Action | Evidence
-Sort: Add first, then ARR descending.
-After the table include the number of accounts recommended to add, number where churn probability should change and total ARR at risk.
-Return HTML only.
+Use border="1", cellpadding="6", cellspacing="0", Arial and 10pt text.
+Do not use style blocks, CSS classes, flexbox or grid.
+
+Columns:
+Account | ARR | Renewal Date | CSM Sentiment | In Forecast? | Current % | Recommended % | Action | Evidence
+
+Action colours:
+- Add: #F8D7DA
+- Increase %: #FFF3CD
+- Decrease % or No change: #D4EDDA
+
+Sort:
+1. Add first.
+2. ARR descending.
+
+After the table include:
+- Number of accounts recommended to add.
+- Number of accounts where churn probability should change.
+- Total ARR at risk.
+
+Return HTML only, with no explanation before or after it.
